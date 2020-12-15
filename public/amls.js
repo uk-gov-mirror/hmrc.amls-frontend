@@ -359,7 +359,10 @@ $(function () {
       .replace(']', '\\]');
 
     function resetSelectIfEmpty(e) {
-      if (e.target.id === autocompleteId) {
+      var inputIdEscaped = e.target.id
+        .replace('[', '\\[')
+        .replace(']', '\\]');
+      if (inputIdEscaped === autocompleteId) {
         var val = e.target.value.trim();
         var countriesArray = Array.prototype.slice.call(this.options);
         var matches = countriesArray.filter(function (o) {
