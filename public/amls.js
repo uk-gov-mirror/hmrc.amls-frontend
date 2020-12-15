@@ -353,7 +353,10 @@ $(function () {
       url: '/anti-money-laundering/assets/countries'
     })
 
-    var autocompleteId = this.id.replace('-select', '')
+    var autocompleteId = this.id
+      .replace('-select', '')
+      .replace('[', '\\[')
+      .replace(']', '\\]');
 
     function resetSelectIfEmpty(e) {
       if (e.target.id === autocompleteId) {
